@@ -1,0 +1,16 @@
+=============Docker 部署 ElasticSearch============
+docker pull elasticsearch:6.8.0
+docker run -d --name es_680 --net dnw_es_680 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:6.8.0
+http://192.168.0.6:9200/
+进入容器：docker exec -it es_680 /bin/bash
+vi config/elasticsearch.yml
+添加：
+    http.cors.enabled: true
+    http.cors.allow-origin: "*"
+重启容器：
+    docker restart es_680
+
+安装elasticsearch-head(可以使用谷歌浏览器的插件：elasticsearch-head)
+docker pull mobz/elasticsearch-head:5
+docker run -d --name es_admin -p 9100:9100 mobz/elasticsearch-head:5
+访问elasticsearch-head: http://192.168.99.100:9100/
