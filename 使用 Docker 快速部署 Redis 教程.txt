@@ -1,0 +1,27 @@
+1、拉取镜像
+docker pull redis:5.7
+
+2、下载完成后查看镜像
+docker images
+
+3、启动redis(二选一即可)
+(1)redis不带密码启动
+docker run -d --name myredis -p 6379:6379  redis:5.7
+
+(2)redis带密码启动
+docker run -d --name myredis -p 6379:6379  redis:5.7 --requirepass "mypassword"
+
+4、查看容器是否启动
+docker ps
+
+5、停止redis
+docker stop myredis
+
+6、启动redis 
+docker start myredis
+
+7、重启redis 
+docker restart myredis
+
+8、redis设置开机自动启动
+docker update --restart=always myredis
