@@ -1,0 +1,17 @@
+1、安装 docker
+yum -y install docker 
+
+2、启动 docker
+systemctl start docker
+
+3、查看 docker
+docker -v
+
+4、docker设置开机自动启动
+systemctl enable docker
+
+5、查看docker运行状态
+systemctl status docker
+
+6、停止 docker
+systemctl stop docker

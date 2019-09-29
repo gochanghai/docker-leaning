@@ -1,0 +1,23 @@
+1、拉取镜像
+docker pull mysql
+
+2、查看镜像
+docker images
+
+3、运行容器
+docker run -p 3306:3306 --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+4、查看运行中的容器
+docker ps
+
+5、停止 docker 运行中的容器
+docker stop mysql-dev
+
+6、启动 docker 中的容器
+docker start mysql-dev
+
+7、设置容器开机自动启动
+docker update --restart=always dev_mysql
+
+
+
