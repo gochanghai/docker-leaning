@@ -1,0 +1,97 @@
+1、 临时关闭selinux然后再打开
+关闭selinux：setenforce 0
+打开selinux：setenforce 1
+2、在当前文件夹创建 redis 目录
+mkdir redis
+3、进入目录 redis
+cd  redis
+4、创建 docker-compose.yml文件用于部署 redis集群(一主二从)
+version: '3.7'
+services:
+  master:
+    image: redis
+    container_name: redis-master
+    restart: always
+    command: redis-server --port 6379 --requirepass lch2199.  --appendonly yes
+    ports:
+      - 6379:6379
+    volumes:
+      - /app/data/redis:/data
+
+  slave1:
+    image: redis
+    container_name: redis-slave-1
+    restart: always
+    command: redis-server --slaveof 192.168.0.6 6379 --port 6380  --requirepass lch2199. --masterauth lch2199.  --appendonly yes
+    ports:
+      - 6380:6380
+    volumes:
+      - /app/data/redis:/data
+
+  slave2:
+    image: redis
+    container_name: redis-slave-2
+    restart: always
+    command: redis-server --slaveof 192.168.0.6 6379 --port 6381  --requirepass lch2199. --masterauth lch2199.  --appendonly yes
+    ports:
+      - 6381:6381
+    volumes:
+      - /app/data/redis:/data
+其中/app/data/redis是宿主主机的路径(/app/data/redis)
+
+5、启动/关闭 redis 集群
+启动：docker-compose up -d
+关闭：docker-compose down
+6、在当前文件夹创建 redis-sentinel 目录
+mkdir redis-sentinel
+7、进入目录 redis-sentinel
+cd  redis-sentinel
+8、创建 docker-compose.yml文件用于部署 redis-sentinel
+version: '3.7'
+services:
+  sentinel1:
+    image: redis
+    container_name: redis-sentinel-1
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    restart: always
+    ports:
+      - 26379:26379
+    volumes:
+      - ./sentinel1.conf:/usr/local/etc/redis/sentinel.conf
+
+  sentinel2:
+    image: redis
+    container_name: redis-sentinel-2
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    restart: always
+    ports:
+      - 26380:26379
+    volumes:
+      - ./sentinel2.conf:/usr/local/etc/redis/sentinel.conf
+
+  sentinel3:
+    image: redis
+    container_name: redis-sentinel-3
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    restart: always
+    ports:
+      - 26381:26379
+    volumes:
+      - ./sentinel3.conf:/usr/local/etc/redis/sentinel.conf
+9、创建 sentinel.conf文件
+port 26379
+dir /tmp
+# 自定义集群名，其中 192.168.8.188 为 redis-master 的 ip，6379 为 redis-master 的端口，2 为最小投票数（因为有 3 台 Sentinel 所以可以设置成 2）
+sentinel monitor mymaster 192.168.0.6 6379 2
+sentinel down-after-milliseconds mymaster 30000
+sentinel parallel-syncs mymaster 1
+sentinel auth-pass mymaster test@dbuser2018
+sentinel failover-timeout mymaster 180000
+sentinel deny-scripts-reconfig yes
+10、将sentinel.conf文件复制三份
+cp sentinel.conf sentinel1.conf
+cp sentinel.conf sentinel2.conf
+cp sentinel.conf sentinel3.conf
+11、启动/关闭 redis-sentinel 集群
+启动：docker-compose up -d
+关闭：docker-compose down
