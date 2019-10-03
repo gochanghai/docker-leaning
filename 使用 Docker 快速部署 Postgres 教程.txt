@@ -1,0 +1,23 @@
+1、拉取镜像
+docker pull postgres
+
+2、查看镜像
+docker images
+
+3、运行容器
+docker run  -p 5432:5432 --name postgres_dev -e POSTGRES_PASSWORD=postgres -d postgres
+
+4、查看运行中的容器
+docker ps
+
+5、停止 docker 运行中的容器
+docker stop postgres-dev
+
+6、启动 docker 中的容器
+docker start postgres-dev
+
+7、设置容器开机自动启动
+docker update --restart=always postgres-dev
+
+
+
