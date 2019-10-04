@@ -1,0 +1,26 @@
+1、拉取镜像
+docker pull nginx
+
+2、查看镜像
+docker images
+
+3、mkdir -p /app/services/webapps
+
+4、运行容器
+docker run -d -p 80:80 --name nginx -v /app/services/webapps/iview-admin:/usr/share/nginx/html nginx
+
+-v /app/services/webapps:/usr/share/nginx/html：将我们自己创建的webapps 目录挂载到容器的 /usr/share/nginx/html
+
+5、查看运行中的容器
+docker ps
+
+6、停止 docker 运行中的容器
+docker stop nginx
+
+7、启动 docker 中的容器
+docker start nginx
+
+8、设置容器开机自动启动
+docker update --restart=always nginx
+
+
