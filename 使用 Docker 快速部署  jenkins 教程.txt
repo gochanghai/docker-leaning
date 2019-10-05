@@ -1,0 +1,28 @@
+1、拉取镜像
+docker pull jenkins
+
+2、查看镜像
+docker images
+
+3、创建文件夹
+mkdir  -p /app/data/jenkins
+4、文件夹授权
+chown -R 1000:1000 jenkins/
+
+5、运行容器
+docker run -itd -p 8080:8080 -p 50000:50000 --name jenkins --privileged=true  -v /app/data/jenkins:/var/jenkins_home jenkins
+
+6、查看运行中的容器
+docker ps
+
+7、查看初始化密码
+sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+8、停止 docker 运行中的容器
+docker stop jenkins
+
+9、启动 docker 中的容器
+docker start jenkins
+
+10、设置容器开机自动启动
+docker update --restart=always jenkins
