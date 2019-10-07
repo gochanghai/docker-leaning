@@ -1,0 +1,50 @@
+1、查看官方Nginx镜像版本，执行
+
+$ docker search nginx
+
+
+ 
+
+ 
+
+ 2、拉取Nginx镜像，执行
+
+$ docker pull nginx
+3、先运行容器，查看一下nginx容器中的配置，执行
+
+$ docker run -p 80:80 --name nginx -d nginx
+4、查看nginx的配置文件目录，执行
+
+$ docker exec nginx ls /etc/nginx
+
+
+
+ 
+
+ 
+
+ 5、复制Nginx容器中的配置文件到本地主机上，首先创建如下目录在本地，执行
+
+$ mkdir   -p   /test/nginx/conf      //该目录用于挂载nginx的以上主配置文件
+$ mkdir   -p   /test/nginx/logs      //该目录用于挂载nginx的日志文件
+$ mkdir   -p   /test/nginx/www       //该目录用于挂载nginx的静态页面
+6、执行容器到本地配置文件的拷贝，执行
+
+$ docker cp -a nginx:/etc/nginx/ /test/nginx/conf(该目录是自己上面创建的)
+
+7、停止并删除上面运行的nginx容器，执行
+
+$ docker stop nginx 
+$ docker rm nginx
+8、开始运行nginx容器，以及挂载本地运行目录，这步一定一定要小心注意，执行
+
+$ docker run -p 80:80 --restart always --name nginx -v /test/nginx/www:/usr/share/nginx/html  -v /srv/nginx/conf/:/test/nginx/conf/nginx -v /test/nginx/logs:/var/log/nginx -d nginx
+9、最后如果一切正常，执行
+
+$ docker ps -a 
+
+
+
+ 
+
+ 可以看出nginx已经成功启动在容器里面了。最后访问试试，至此以成功
