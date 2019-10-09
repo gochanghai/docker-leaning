@@ -1,0 +1,12 @@
+1. 拉取 docker 镜像
+docker pull mongo:3.4
+
+2. 运行
+docker run -d --name mongodb --volume /usr/local/mongodata:/data/db -p 27017:27017 mongo:3.4 --auth
+
+3. 进入 mongo
+docker exec -it mongodb mongo
+
+4. 创建数据库帐号
+use admin;
+db.createUser({ user: 'root', pwd: '123', roles: [ { role: "root", db: "admin" } ] });
