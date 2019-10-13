@@ -1,0 +1,11 @@
+============= Docker 部署 elasticsearch-head ============
+安装elasticsearch-head(可以使用谷歌浏览器的插件：elasticsearch-head)
+
+1、拉取镜像
+docker pull mobz/elasticsearch-head:5
+
+2、运行镜像:
+docker run -d --name es_admin -p 9100:9100 mobz/elasticsearch-head:5
+
+3、访问elasticsearch-head:
+http://ip:9100/
