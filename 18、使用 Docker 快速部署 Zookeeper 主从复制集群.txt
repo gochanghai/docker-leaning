@@ -1,0 +1,46 @@
+1、新建一个 docker-compose.yml 文件
+
+2、把下面的代码复制到 docker-compose.yml
+version: '3.1'
+services:
+    zoo1:
+        image: zookeeper
+        restart: always
+        hostname: zoo1
+        ports:
+            - 2181:2181
+        environment:
+            ZOO_MY_ID: 1
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+    zoo2:
+        image: zookeeper
+        restart: always
+        hostname: zoo2
+        ports:
+            - 2182:2181
+        environment:
+            ZOO_MY_ID: 2
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+    zoo3:
+        image: zookeeper
+        restart: always
+        hostname: zoo3
+        ports:
+            - 2183:2181
+        environment:
+            ZOO_MY_ID: 3
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+3、在目录下执行下面的命令
+docker-compose up -d
+
+4、查看运行中的容器
+docker ps
+
+5、进入容器
+docker exec -it zookeeper_zoo1_1 /bin/bash
+
+6、检查服务器状态
+./bin/zkServer.sh status
