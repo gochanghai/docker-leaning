@@ -1,0 +1,37 @@
+1、拉取镜像
+docker pull silsuer/yapi
+
+2、运行镜像生成容器
+docker run --name yapi -dit -p 27017:27017 -p 9090:9090 -p 3000:3000 silsuer/yapi bash
+
+3、进入容器
+docker exec -it yapi bash
+
+4、开始部署安装（以下命令需要进入到容器中）
+4.1、启动mongodb
+service mongodb start
+
+4.2启动yapi安装程序
+yapi server
+
+4.3、在浏览器中输入ip:9090进行安装 （如果出现报错需要执行下面的命令）
+
+4.4、进入容器
+docker exe -it yapi bash
+
+4.5、升级apt-get源
+apt-get update
+
+4.6、安装git
+apt-get install git
+
+4.7、在浏览器中输入ip:9090进行安装 
+
+4.8、启动yapi
+进入到 /my-yapi/ 目录 
+执行 nohup node /my-yapi/vendors/server/app.js 2>&1 &
+
+4.9 执行ctrl+p+ctrl+q 退出容器
+
+5、访问yapi
+http://ip:3000
