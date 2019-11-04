@@ -1,0 +1,23 @@
+1、拉取镜像
+docker pull zookeeper
+
+2、查看镜像
+docker images
+
+3、运行容器
+docker run --name zookeeper -p 2181:2181 -d zookeeper
+
+4、查看运行中的容器
+docker ps
+
+5、停止 docker 运行中的容器
+docker stop zookeeper
+
+6、启动 docker 中的容器
+docker start zookeeper
+
+7、设置容器开机自动启动
+docker update --restart=always zookeeper
+
+
+
