@@ -1,0 +1,25 @@
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper
+    restart: always    
+    ports:
+      - "2181:2181"
+    container_name: zookeeper
+  kafka:
+    image: wurstmeister/kafka
+    depends_on: [ zookeeper ]
+    restart: always
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.0.6
+      KAFKA_BROKER_ID: 1
+      KAFKA_CREATE_TOPICS: "test:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: 192.168.0.6:2181
+    volumes:
+      /app/data/kafka/docker.sock:/var/run/docker.sock
+    container_name: kafka
+
+
+docker run --name kafka -p 9092:9092 --env  KAFKA_BROKER_ID=0 --env  KAFKA_ZOOKEEPER_CONNECT=192.168.0.6:2181 --env KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.0.6:9092 --env KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 --volume /app/data/kafka/docker.sock:/var/run/docker.sock  -d wurstmeister/kafka 
