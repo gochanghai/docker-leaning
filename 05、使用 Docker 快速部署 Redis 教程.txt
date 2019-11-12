@@ -1,27 +1,27 @@
-1¡¢À­È¡¾µÏñ
-docker pull redis:5.7
+1ã€æ‹‰å–é•œåƒ
+docker pull redis:4.0
 
-2¡¢ÏÂÔØÍê³Éºó²é¿´¾µÏñ
+2ã€ä¸‹è½½å®ŒæˆåæŸ¥çœ‹é•œåƒ
 docker images
 
-3¡¢Æô¶¯redis(¶şÑ¡Ò»¼´¿É)
-(1)redis²»´øÃÜÂëÆô¶¯
-docker run -d --name myredis -p 6379:6379  redis:5.7
+3ã€å¯åŠ¨redis(äºŒé€‰ä¸€å³å¯)
+(1)redisä¸å¸¦å¯†ç å¯åŠ¨
+docker run -d --name myredis -p 6379:6379  redis:4.0
 
-(2)redis´øÃÜÂëÆô¶¯
-docker run -d --name myredis -p 6379:6379  redis:5.7 --requirepass "mypassword"
+(2)rediså¸¦å¯†ç å¯åŠ¨
+docker run -d --name myredis -p 6379:6379  redis:4.0 --requirepass "mypassword"
 
-4¡¢²é¿´ÈİÆ÷ÊÇ·ñÆô¶¯
+4ã€æŸ¥çœ‹å®¹å™¨æ˜¯å¦å¯åŠ¨
 docker ps
 
-5¡¢Í£Ö¹redis
+5ã€åœæ­¢redis
 docker stop myredis
 
-6¡¢Æô¶¯redis 
+6ã€å¯åŠ¨redis 
 docker start myredis
 
-7¡¢ÖØÆôredis 
+7ã€é‡å¯redis 
 docker restart myredis
 
-8¡¢redisÉèÖÃ¿ª»ú×Ô¶¯Æô¶¯
+8ã€redisè®¾ç½®å¼€æœºè‡ªåŠ¨å¯åŠ¨
 docker update --restart=always myredis
