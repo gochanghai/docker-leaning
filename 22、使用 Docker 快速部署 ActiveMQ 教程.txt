@@ -1,0 +1,24 @@
+
+1、拉取镜像
+docker pull rmohr/activemq
+
+2、下载完成后查看镜像
+docker images
+
+3、启动镜像
+docker run -p 61616:61616 -p 8161:8161 --name activemq  -v /app/config/activemq:/opt/activemq/conf  -v /app/data/activemq:/opt/activemq/data   rmohr/activemq
+
+4、查看运行中的容器
+docker ps
+
+5、停止 docker 运行中的容器
+docker stop activemq
+
+6、启动 docker 中的容器
+docker start activemq
+
+7、设置容器开机自动启动
+docker update --restart=always activemq
+
+8、页面查看web管理页面
+默认账号密码都是admin
