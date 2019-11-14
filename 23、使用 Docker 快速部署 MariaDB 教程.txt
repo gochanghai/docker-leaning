@@ -1,0 +1,27 @@
+
+1、拉取镜像
+docker pull mariadb
+
+2、下载完成后查看镜像
+docker images
+
+3、建一个目录作为和容器的映射目录
+mkdir -p /app/data/mariadb
+
+4、启动镜像
+docker run --name mariadb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -v /app/data/mariadb:/var/lib/mysql -d mariadb
+
+5、查看运行中的容器
+docker ps
+
+6、停止 docker 运行中的容器
+docker stop mariadb
+
+7、启动 docker 中的容器
+docker start mariadb
+
+8、设置容器开机自动启动
+docker mariadb update --restart=always 
+
+temp
+docker run -v /app/data/mariadb/:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --privileged=true --restart always --name mariadbs -d mariadb:latest
