@@ -1,26 +1,28 @@
-1¡¢À­È¡¾µÏñ
+1ã€æ‹‰å–é•œåƒ
 docker pull nginx
 
-2¡¢²é¿´¾µÏñ
+2ã€æŸ¥çœ‹é•œåƒ
 docker images
 
-3¡¢mkdir -p /app/services/webapps
+3ã€mkdir -p /app/services/webapps
 
-4¡¢ÔËĞĞÈİÆ÷
+4ã€è¿è¡Œå®¹å™¨
 docker run -d -p 80:80 --name nginx -v /app/services/webapps/iview-admin:/usr/share/nginx/html nginx
 
--v /app/services/webapps:/usr/share/nginx/html£º½«ÎÒÃÇ×Ô¼º´´½¨µÄwebapps Ä¿Â¼¹ÒÔØµ½ÈİÆ÷µÄ /usr/share/nginx/html
+-v /app/services/webapps:/usr/share/nginx/htmlï¼šå°†æˆ‘ä»¬è‡ªå·±åˆ›å»ºçš„webapps ç›®å½•æŒ‚è½½åˆ°å®¹å™¨çš„ /usr/share/nginx/html
 
-5¡¢²é¿´ÔËĞĞÖĞµÄÈİÆ÷
+æˆ–è€… docker run -d -p 80:80 --name nginx --privileged=true  -v /app/config/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
+
+5ã€æŸ¥çœ‹è¿è¡Œä¸­çš„å®¹å™¨
 docker ps
 
-6¡¢Í£Ö¹ docker ÔËĞĞÖĞµÄÈİÆ÷
+6ã€åœæ­¢ docker è¿è¡Œä¸­çš„å®¹å™¨
 docker stop nginx
 
-7¡¢Æô¶¯ docker ÖĞµÄÈİÆ÷
+7ã€å¯åŠ¨ docker ä¸­çš„å®¹å™¨
 docker start nginx
 
-8¡¢ÉèÖÃÈİÆ÷¿ª»ú×Ô¶¯Æô¶¯
+8ã€è®¾ç½®å®¹å™¨å¼€æœºè‡ªåŠ¨å¯åŠ¨
 docker update --restart=always nginx
 
 
