@@ -4,4 +4,4 @@ docker run -d --network=host --name tracker --privileged=true  -v /app/data/fast
 
 docker run -d --network=host --name storage -e TRACKER_SERVER=192.168.0.103:22122 --privileged=true  -v /app/data/fastdfs/storage:/var/fdfs -e GROUP_NAME=group1 delron/fastdfs storage
 
-
+教程：https://cloud.tencent.com/developer/article/1437419
