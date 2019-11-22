@@ -1,0 +1,57 @@
+查看是否安装 gcc
+gcc -v
+
+安装gcc
+ yum install gcc-c++
+
+下载 redis
+http://download.redis.io/releases/redis-5.0.7.tar.gz
+
+加压缩
+tar xzf redis-5.0.7.tar.gz
+
+进入文件夹
+cd redis-5.0.7
+
+编译
+make
+
+配置 redis
+vi redis.conf
+
+设置密码：requirepass  123456
+开启后台运行：daemonize yes
+
+运行 redis
+src/redis-server 或 src/redis-server redis.conf
+
+检查 redis 后台进程是否正在运行
+ps -ef |grep redis
+
+检测6379端口是否在监听
+netstat -lntp | grep 6379
+
+netstat 安装
+yum install net-tools
+
+启动客户端
+src/redis-cli
+
+登录客户端 redis
+127.0.0.1:6379> auth "yourpassword"
+
+测试
+127.0.0.1:6379> keys *
+(empty list or set)
+127.0.0.1:6379> set key "hello world"
+OK
+127.0.0.1:6379> get key
+"hello world"
+
+开启端口
+注释 bind
+
+重启redis
+ps -ef | grep -i redis
+kill -9 60184
+src/redis-server redis.conf
