@@ -1,0 +1,90 @@
+下载 mysql: 
+mysql-5.7.25-1.el6.x86_64.rpm-bundle.tar
+
+解压缩
+tar -xvf mysql-5.7.25-1.el6.x86_64.rpm-bundle.tar
+
+彻底卸载MySQL(如果以前没有安装过，则跳过此步骤)
+1、 yum remove  mysql mysql-server mysql-libs mysql-server;
+
+2、查看系统中是否以rpm包安装的mysql
+
+rpm -qa | grep -i mysql
+
+如果有执行卸载mysql
+
+rpm -e mysql-community-common.xxx
+
+3、whereis mysql 或者 find / -name mysql
+
+清空相关mysql的所有目录以及文件 rm -rf /usr/share/mysql
+
+rm -rf /usr/lib/mysql
+rm -rf /usr/share/mysql
+
+rm -rf /usr/my.cnf
+
+
+安装MySQL
+按顺序安装
+
+必要安装（注意顺序）
+安装common
+安装lib 依赖于common，确保已经卸载mariadb
+依赖于libs
+依赖于client、common
+rpm -ivh mysql-community-common-8.0.13-1.el7.x86_64.rpm
+rpm -ivh mysql-community-libs-8.0.13-1.el7.x86_64.rpm
+rpm -ivh mysql-community-client-8.0.13-1.el7.x86_64.rpm
+rpm -ivh mysql-community-server-8.0.13-1.el7.x86_64.rpm
+非必要安装（注意顺序）
+rpm -ivh mysql-community-libs-compat-8.0.13-1.el7.x86_64.rpm
+rpm -ivh mysql-community-embedded-compat-8.0.13-1.el7.x86_64.rpm
+rpm -ivh mysql-community-devel-8.0.13-1.el7.x86_64.rpm
+rpm -ivh mysql-community-test-8.0.13-1.el7.x86_64.rpm
+
+如报错 warning: mysql-community-server-5.7.25-1.el6.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
+error: Failed dependencies: 类型错误
+命令末尾加上：--force --nodeps
+
+用此命令执行即可：
+rpm -ivh  mysql-community-server-5.7.25-1.el6.x86_64.rpm --force --nodeps
+
+查看密码
+cat /var/log/mysqld.log 或 cat /var/log/mysqld.log | grep password
+如：[Note] A temporary password is generated for root@localhost: .2#Bcq3(RuGi
+
+登录 mysql：
+mysql -u root -p
+
+修改密码
+alter user 'root'@'localhost' identified by '123456';
+
+防火墙开放端口
+firewall-cmd --add-port=3306/tcp --permanent
+
+================ 置服务器上MySQL允许外网访问 ===================
+1.修改配置文件
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+把bind-address参数的值改成你的内/外网IP或0.0.0.0,或者直接注释掉这行.
+
+
+2.登录数据库
+mysql -u root -p
+
+输入密码
+mysql> use mysql;
+
+
+3.查询host
+mysql> select user,host from user;
+
+
+4.创建host
+如果没有"%"这个host值,就执行下面这两句:
+mysql> update user set host='%' where user='root';
+mysql> flush privileges;
+
+================ MySQL添加新用户、创建数据库、为新用户分配权限 ===================
+
+
