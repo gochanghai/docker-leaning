@@ -49,9 +49,29 @@ OK
 "hello world"
 
 开启端口
+
 注释 bind
 
 重启redis
 ps -ef | grep -i redis
 kill -9 60184
 src/redis-server redis.conf
+
+防火墙开放端口
+firewall-cmd --add-port=6379/tcp --permanent
+
+关闭防火墙
+systemctl stop firewalld
+service  iptables stop
+
+查看防火墙
+systemctl status firewalld
+service  iptables status
+
+永久关闭防火墙
+systemctl disable firewalld
+service iptables restart 
+
+重启防火墙
+systemctl enable firewalld
+service iptables restart 
