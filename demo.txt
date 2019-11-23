@@ -45,6 +45,8 @@ $ docker ps -a
 
 
 
+0、安装 vim
+yum install vim-enhanced
  
 
  可以看出nginx已经成功启动在容器里面了。最后访问试试，至此以成功
