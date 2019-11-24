@@ -1,0 +1,36 @@
+1.下载 nginx
+http://nginx.org/download/nginx-1.13.7.tar.gz
+
+2.一键安装上面四个依赖
+yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+
+3.下载并解压安装包
+tar -xvf nginx-1.13.7.tar.g -C /usr/local/nginx
+
+4.安装nginx
+//进入nginx目录
+cd /usr/local/nginx
+//执行命令
+./configure
+//执行make命令
+make
+//执行make install命令
+make install
+
+5.配置nginx.conf
+vi conf/nginx.conf
+
+6.启动nginx
+/usr/local/nginx/sbin/nginx -s reload
+
+7.查看nginx进程是否启动
+ps -ef | grep nginx
+
+8.关闭防火墙命令
+systemctl stop firewalld.service
+
+9. nginx 常用命令
+启动 /usr/local/nginx/sbin/nginx
+关闭 /usr/local/nginx/sbin/nginx -s stop
+重启 /usr/local/nginx/sbin/nginx -s reload
+补充启动  /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
