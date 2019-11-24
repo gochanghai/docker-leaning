@@ -86,5 +86,22 @@ mysql> update user set host='%' where user='root';
 mysql> flush privileges;
 
 ================ MySQL添加新用户、创建数据库、为新用户分配权限 ===================
+1.登录Mysql
+mysql -u root -p
 
+2.添加新的用户
+  允许本地 IP访问localhost的Mysql数据库
+  create user 'editest'@'localhost' identified by 'editest123456';
+  允许外网IP访问数据库editest
+  create user 'editest'@'%' identified by 'editest123456';
+  
+3.创建一个新的数据库
+create database editestdb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
+4.查看数据库
+show databases;
+
+5.用户editest赋权给数据库editestdb，并刷新授权
+mysql> grant all privileges on `editestdb`.* to 'editest'@'localhost' identified by 'editest123456' with grant option;
+mysql> grant all privileges on `editestdb`.* to 'editest'@'%' identified by 'editest123456' with grant option; 
+mysql> flush privileges;
