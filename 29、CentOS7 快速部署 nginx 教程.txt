@@ -16,6 +16,8 @@ cd /usr/local/nginx
 make
 //执行make install命令
 make install
+// 查看安装目录
+whereis nginx
 
 5.配置nginx.conf
 vi conf/nginx.conf
