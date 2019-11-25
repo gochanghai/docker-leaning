@@ -104,4 +104,5 @@ show databases;
 5.用户editest赋权给数据库editestdb，并刷新授权
 mysql> grant all privileges on `editestdb`.* to 'editest'@'localhost' identified by 'editest123456' with grant option;
 mysql> grant all privileges on `editestdb`.* to 'editest'@'%' identified by 'editest123456' with grant option; 
+mysql> grant all privileges on editestdb.* to 'editest'@'%';
 mysql> flush privileges;
