@@ -1,0 +1,17 @@
+1.下载tomcat
+apache-tomcat-8.5.45.tar.gz
+
+2.解压缩
+tar -xvf apache-tomcat-8.5.45.tar.gz
+
+3.Tomcat运行环境配置
+把tomcat的bin目录下的startup.sh和shutdown.sh这两个脚本里的最前面加上下面一段:
+export JAVA_HOME=/app/runtimes/jdk1.8.0_221
+export TOMCAT_HOME=/app/services/tomcat-8080
+export CATALINA_HOME=/app/services/tomcat-8080
+export CLASS_PATH=$JAVA_HOME/bin/lib:$JAVA_HOME/jre/lib:$JAVA_HOME/lib/tool.jar
+export PATH=$PATH:$JAVA_HOME/bin:$TOMCAT_HOME/bin
+
+其中：
+/app/runtimes/jdk-11.0.3 是自己的jdk安装路径
+/app/services/tomcat/apache-tomcat-8.5.45 是自己的tomcat安装路径
