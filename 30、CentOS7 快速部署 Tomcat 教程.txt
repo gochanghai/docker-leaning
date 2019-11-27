@@ -15,3 +15,8 @@ export PATH=$PATH:$JAVA_HOME/bin:$TOMCAT_HOME/bin
 其中：
 /app/runtimes/jdk-11.0.3 是自己的jdk安装路径
 /app/services/tomcat/apache-tomcat-8.5.45 是自己的tomcat安装路径
+
+
+
+4.关闭防火墙命令
+systemctl stop firewalld.service
