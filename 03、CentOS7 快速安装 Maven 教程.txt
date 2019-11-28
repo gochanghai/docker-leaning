@@ -1,17 +1,33 @@
-1> ÏÂÔØmaven£º£¨apache-maven-3.6.1-bin.tar.gz£©
+1> ä¸‹è½½mavenï¼šï¼ˆapache-maven-3.6.1-bin.tar.gzï¼‰
 
-2> ÉÏ´«µ½·şÎñÆ÷£¨/usr/local/maven/£©
+2> ä¸Šä¼ åˆ°æœåŠ¡å™¨ï¼ˆ/usr/local/maven/ï¼‰
 
-3> ½âÑ¹ÎÄ¼ş£ºtar vxf apache-maven-3.6.1-bin.tar.gz
+3> è§£å‹æ–‡ä»¶ï¼štar vxf apache-maven-3.6.1-bin.tar.gz
 
-4> ÅäÖÃ»·¾³±äÁ¿ ´ò¿ª vi /etc/profile Ìí¼ÓÒ»ÏÂÄÚÈİ
+4> é…ç½®ç¯å¢ƒå˜é‡ æ‰“å¼€ vi /etc/profile æ·»åŠ ä¸€ä¸‹å†…å®¹
 
 MAVEN_HOME=/usr/local/maven/apache-maven-3.6.1
 export MAVEN_HOME
 export PATH=${PATH}:${MAVEN_HOME}/bin
 
-5> ĞŞ¸ÄÍê³ÉÖ®ºó£¬Ê¹ÆäÉúĞ§
+5> ä¿®æ”¹å®Œæˆä¹‹åï¼Œä½¿å…¶ç”Ÿæ•ˆ
 
 source /etc/profile
 
-6> ÊäÈë mvn -version ·µ»Ø°æ±¾ĞÅÏ¢Ôò°²×°Õı³£¡£
+6> è¾“å…¥ mvn -version è¿”å›ç‰ˆæœ¬ä¿¡æ¯åˆ™å®‰è£…æ­£å¸¸ã€‚
+
+============== maven settings.xml ==============
+é…ç½®é˜¿é‡Œäº‘ä¸­å¤®ä»“åº“ :
+<mirror>
+  <id>alimaven</id>
+  <mirrorOf>central</mirrorOf>
+  <name>aliyun maven</name>
+  <url>https://maven.aliyun.com/repository/central</url>
+</mirror>
+æˆ–
+<mirror>
+  <id>alimaven</id>
+  <name>aliyun maven</name>
+  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+  <mirrorOf>central</mirrorOf>       
+</mirror>
