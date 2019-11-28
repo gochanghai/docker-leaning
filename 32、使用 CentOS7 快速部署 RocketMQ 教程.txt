@@ -1,0 +1,45 @@
+0.安装 JDK 1.8+
+忽略此过程
+
+1.下载 RocketMQ( rocketmq-all-4.4.0-bin-release.zip )
+http://rocketmq.apache.org/dowloading/releases/ 
+
+2.解压缩
+tar -zxvf apache-activemq-5.15.10-bin.tar.gz
+
+3.文件夹重命令
+mv apache-activemq-5.15.10 activemq
+
+4.0.启动 mqnamesrv 服务
+nohup sh bin/mqnamesrv &
+
+4.1查看日记
+tail -f ~/logs/rocketmqlogs/namesrv.log
+
+5.0启动 mqbroker 服务
+nohup sh bin/mqbroker -n localhost:9876 &
+
+5.1查看日记
+tail -f ~/logs/rocketmqlogs/broker.log
+
+5.检查进程
+ps aux | grep mqbroker
+ps aux | grep mqnamesrv
+
+8.关闭 RocketMQ
+sh bin/mqshutdown broker
+sh bin/mqshutdown namesrv
+
+注：详细教程http://rocketmq.apache.org/docs/quick-start/
+
+RocketMQ console监控 安装
+
+git clone https://github.com/apache/rocketmq-externals.git
+cd rocketmq-externals/
+mvn clean install -Dmaven.test.skip
+cd rocketmq-console/target/
+nohup java -Duser.home=/opt/logs  -jar rocketmq-console-ng-1.0.0.jar --rocketmq.config.namesrvAddr=$rocketmq_namesrvAddr  > /dev/null 2>&1 &
+
+注：
+-Duser.home=/opt/logs 为输出日志位置
+--rocketmq.config.namesrvAddr=$rocketmq_namesrvAddr 为broker地址

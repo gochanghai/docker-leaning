@@ -1,0 +1,33 @@
+1.下载 ActiveMQ ( apache-activemq-5.15.10-bin.tar.gz )
+http://activemq.apache.org
+
+2.解压缩
+tar -zxvf apache-activemq-5.15.10-bin.tar.gz
+
+3.文件夹重命令
+mv apache-activemq-5.15.10 activemq
+
+4.启动ActiveMQ服务
+./activemq/bin/activemq start
+
+5.检查进程
+ps aux | grep activemq
+
+6.登录管理界面
+http://192.168.0.7:8161/
+用户名: admin
+密码: admin
+
+7.重启ActiveMQ
+./activemq/bin/activemq restart
+
+8.关闭ActiveMQ
+./activemq/bin/activemq stop
+
+
+9.修改端口号
+修改conf下的jetty.xml文件中的port参数既可
+
+
+
+注：详细教程https://cloud.tencent.com/developer/article/1409327
