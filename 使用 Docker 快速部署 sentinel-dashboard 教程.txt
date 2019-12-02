@@ -1,0 +1,10 @@
+1.拉取镜像
+docker pull bladex/sentinel-dashboard
+
+2.运行镜像
+docker run --name sentinel -d -p 8858:8858 -d bladex/sentinel-dashboard
+
+3.访问
+url: ip:8858
+用户名： sentinel
+密码： sentinel
