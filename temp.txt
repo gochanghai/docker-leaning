@@ -1,0 +1,4 @@
+# host
+www.lch.com:3306 mysql
+www.lch.com:80 nginx
+www.lch.com:9000 gateway
