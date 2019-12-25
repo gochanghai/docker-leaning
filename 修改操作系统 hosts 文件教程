@@ -1,0 +1,7 @@
+win10-修改host文件的方法
+路径: C:\WINDOWS\system32\drivers\etc
+格式如：192.30.253.112       github.com
+
+linux-修改host文件的方法
+路径：/etc/hosts
+格式如：192.30.253.112       github.com
