@@ -1,0 +1,20 @@
+1、拉取镜像
+docker pull minio/minio
+
+2、在Docker容器中运行MinIO，这里我们将MiniIO的数据和配置文件夹挂在到宿主机上：
+docker run -p 9090:9000 --name minio \
+  -v /mydata/minio/data:/data \
+  -v /mydata/minio/config:/root/.minio \
+  -d minio/minio server /data
+
+3、查看容器
+docker ps
+
+4、查看镜像
+docker  images
+
+5、停止容器
+docker stop minio
+
+6、查看镜像
+docker  start minio
