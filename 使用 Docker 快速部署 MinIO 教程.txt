@@ -18,3 +18,6 @@ docker stop minio
 
 6、查看镜像
 docker  start minio
+
+Access Key: minioadmin
+Secret Key: minioadmin
