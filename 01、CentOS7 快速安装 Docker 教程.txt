@@ -1,17 +1,17 @@
-1¡¢°²×° docker
+1ã€å®‰è£… docker
 yum -y install docker 
 
-2¡¢Æô¶¯ docker
+2ã€å¯åŠ¨ docker
 systemctl start docker
 
-3¡¢²é¿´ docker
+3ã€æŸ¥çœ‹ docker
 docker -v
 
-4¡¢dockerÉèÖÃ¿ª»ú×Ô¶¯Æô¶¯
+4ã€dockerè®¾ç½®å¼€æœºè‡ªåŠ¨å¯åŠ¨
 systemctl enable docker
 
-5¡¢²é¿´dockerÔËĞĞ×´Ì¬
+5ã€æŸ¥çœ‹dockerè¿è¡ŒçŠ¶æ€
 systemctl status docker
 
-6¡¢Í£Ö¹ docker
+6ã€åœæ­¢ docker
 systemctl stop docker
