@@ -1,20 +1,20 @@
-À­È¡¾µÏñ:
+1.æ‹‰å–é•œåƒ:
 docker pull rabbitmq:3.7.18-management
 
-ÔËĞĞ¾µÏñ:
+2.è¿è¡Œé•œåƒ:
 docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq:3.7.18-management
 
-Í£Ö¹ÈİÆ÷:
+3.åœæ­¢å®¹å™¨:
 docker stop rabbitmq 
 
-ÔËĞĞÈİÆ÷:
+4.è¿è¡Œå®¹å™¨:
 docker start rabbitmq 
 
-ÖØÆôÈİÆ÷:
+5.é‡å¯å®¹å™¨:
 docker restart rabbitmq
 
-·ÃÎÊµØÖ·
-http://[ËŞÖ÷»úIP]:15672
-Èç: http://192.168.0.6:15672
+6.è®¿é—®åœ°å€
+http://[å®¿ä¸»æœºIP]:15672
+å¦‚: http://192.168.0.6:15672
 
-ÓÃ»§Ãû£ºguest   ÃÜÂë£ºguest
+ç”¨æˆ·åï¼šguest   å¯†ç ï¼šguest
