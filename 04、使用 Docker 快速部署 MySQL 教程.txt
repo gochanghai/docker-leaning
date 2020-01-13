@@ -1,23 +1,20 @@
-1¡¢À­È¡¾µÏñ
+1ã€æ‹‰å–é•œåƒ
 docker pull mysql
 
-2¡¢²é¿´¾µÏñ
+2ã€æŸ¥çœ‹é•œåƒ
 docker images
 
-3¡¢ÔËĞĞÈİÆ÷
+3ã€è¿è¡Œå®¹å™¨
 docker run -p 3306:3306 --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
-4¡¢²é¿´ÔËĞĞÖĞµÄÈİÆ÷
+4ã€æŸ¥çœ‹è¿è¡Œä¸­çš„å®¹å™¨
 docker ps
 
-5¡¢Í£Ö¹ docker ÔËĞĞÖĞµÄÈİÆ÷
+5ã€åœæ­¢ docker è¿è¡Œä¸­çš„å®¹å™¨
 docker stop mysql-dev
 
-6¡¢Æô¶¯ docker ÖĞµÄÈİÆ÷
+6ã€å¯åŠ¨ docker ä¸­çš„å®¹å™¨
 docker start mysql-dev
 
-7¡¢ÉèÖÃÈİÆ÷¿ª»ú×Ô¶¯Æô¶¯
+7ã€è®¾ç½®å®¹å™¨å¼€æœºè‡ªåŠ¨å¯åŠ¨
 docker update --restart=always dev_mysql
-
-
-
