@@ -1,11 +1,11 @@
-=============Docker ²¿Êğ ElasticSearch============
+============= Docker éƒ¨ç½² ElasticSearch ============
 docker pull elasticsearch:6.8.0
 docker run -d --name es_680 --net dnw_es_680 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:6.8.0
 http://192.168.0.6:9200/
-½øÈëÈİÆ÷£ºdocker exec -it es_680 /bin/bash
+è¿›å…¥å®¹å™¨ï¼šdocker exec -it es_680 /bin/bash
 vi config/elasticsearch.yml
-Ìí¼Ó£º
+æ·»åŠ ï¼š
     http.cors.enabled: true
     http.cors.allow-origin: "*"
-ÖØÆôÈİÆ÷£º
+é‡å¯å®¹å™¨ï¼š
     docker restart es_680
