@@ -1,12 +1,12 @@
-1. À­È¡ docker ¾µÏñ
+1. æ‹‰å– docker é•œåƒ
 docker pull mongo:3.4
 
-2. ÔËĞĞ
+2. è¿è¡Œ
 docker run -d --name mongodb --volume /usr/local/mongodata:/data/db -p 27017:27017 mongo:3.4 --auth
 
-3. ½øÈë mongo
+3. è¿›å…¥ mongo
 docker exec -it mongodb mongo
 
-4. ´´½¨Êı¾İ¿âÕÊºÅ
+4. åˆ›å»ºæ•°æ®åº“å¸å·
 use admin;
 db.createUser({ user: 'root', pwd: '123', roles: [ { role: "root", db: "admin" } ] });
