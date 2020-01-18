@@ -1,11 +1,11 @@
-1¡¢ ÁÙÊ±¹Ø±ÕselinuxÈ»ºóÔÙ´ò¿ª
-¹Ø±Õselinux£ºsetenforce 0
-´ò¿ªselinux£ºsetenforce 1
-2¡¢ÔÚµ±Ç°ÎÄ¼ş¼Ğ´´½¨ redis Ä¿Â¼
+1ã€ ä¸´æ—¶å…³é—­selinuxç„¶åå†æ‰“å¼€
+å…³é—­selinuxï¼šsetenforce 0
+æ‰“å¼€selinuxï¼šsetenforce 1
+2ã€åœ¨å½“å‰æ–‡ä»¶å¤¹åˆ›å»º redis ç›®å½•
 mkdir redis
-3¡¢½øÈëÄ¿Â¼ redis
+3ã€è¿›å…¥ç›®å½• redis
 cd  redis
-4¡¢´´½¨ docker-compose.ymlÎÄ¼şÓÃÓÚ²¿Êğ redis¼¯Èº(Ò»Ö÷¶ş´Ó)
+4ã€åˆ›å»º docker-compose.ymlæ–‡ä»¶ç”¨äºéƒ¨ç½² redisé›†ç¾¤(ä¸€ä¸»äºŒä»)
 version: '3.7'
 services:
   master:
@@ -37,16 +37,16 @@ services:
       - 6381:6381
     volumes:
       - /app/data/redis:/data
-ÆäÖĞ/app/data/redisÊÇËŞÖ÷Ö÷»úµÄÂ·¾¶(/app/data/redis)
+å…¶ä¸­/app/data/redisæ˜¯å®¿ä¸»ä¸»æœºçš„è·¯å¾„(/app/data/redis)
 
-5¡¢Æô¶¯/¹Ø±Õ redis ¼¯Èº
-Æô¶¯£ºdocker-compose up -d
-¹Ø±Õ£ºdocker-compose down
-6¡¢ÔÚµ±Ç°ÎÄ¼ş¼Ğ´´½¨ redis-sentinel Ä¿Â¼
+5ã€å¯åŠ¨/å…³é—­ redis é›†ç¾¤
+å¯åŠ¨ï¼šdocker-compose up -d
+å…³é—­ï¼šdocker-compose down
+6ã€åœ¨å½“å‰æ–‡ä»¶å¤¹åˆ›å»º redis-sentinel ç›®å½•
 mkdir redis-sentinel
-7¡¢½øÈëÄ¿Â¼ redis-sentinel
+7ã€è¿›å…¥ç›®å½• redis-sentinel
 cd  redis-sentinel
-8¡¢´´½¨ docker-compose.ymlÎÄ¼şÓÃÓÚ²¿Êğ redis-sentinel
+8ã€åˆ›å»º docker-compose.ymlæ–‡ä»¶ç”¨äºéƒ¨ç½² redis-sentinel
 version: '3.7'
 services:
   sentinel1:
@@ -78,20 +78,20 @@ services:
       - 26381:26379
     volumes:
       - ./sentinel3.conf:/usr/local/etc/redis/sentinel.conf
-9¡¢´´½¨ sentinel.confÎÄ¼ş
+9ã€åˆ›å»º sentinel.confæ–‡ä»¶
 port 26379
 dir /tmp
-# ×Ô¶¨Òå¼¯ÈºÃû£¬ÆäÖĞ 192.168.8.188 Îª redis-master µÄ ip£¬6379 Îª redis-master µÄ¶Ë¿Ú£¬2 Îª×îĞ¡Í¶Æ±Êı£¨ÒòÎªÓĞ 3 Ì¨ Sentinel ËùÒÔ¿ÉÒÔÉèÖÃ³É 2£©
+# è‡ªå®šä¹‰é›†ç¾¤åï¼Œå…¶ä¸­ 192.168.8.188 ä¸º redis-master çš„ ipï¼Œ6379 ä¸º redis-master çš„ç«¯å£ï¼Œ2 ä¸ºæœ€å°æŠ•ç¥¨æ•°ï¼ˆå› ä¸ºæœ‰ 3 å° Sentinel æ‰€ä»¥å¯ä»¥è®¾ç½®æˆ 2ï¼‰
 sentinel monitor mymaster 192.168.0.6 6379 2
 sentinel down-after-milliseconds mymaster 30000
 sentinel parallel-syncs mymaster 1
 sentinel auth-pass mymaster test@dbuser2018
 sentinel failover-timeout mymaster 180000
 sentinel deny-scripts-reconfig yes
-10¡¢½«sentinel.confÎÄ¼ş¸´ÖÆÈı·İ
+10ã€å°†sentinel.confæ–‡ä»¶å¤åˆ¶ä¸‰ä»½
 cp sentinel.conf sentinel1.conf
 cp sentinel.conf sentinel2.conf
 cp sentinel.conf sentinel3.conf
-11¡¢Æô¶¯/¹Ø±Õ redis-sentinel ¼¯Èº
-Æô¶¯£ºdocker-compose up -d
-¹Ø±Õ£ºdocker-compose down
+11ã€å¯åŠ¨/å…³é—­ redis-sentinel é›†ç¾¤
+å¯åŠ¨ï¼šdocker-compose up -d
+å…³é—­ï¼šdocker-compose down
