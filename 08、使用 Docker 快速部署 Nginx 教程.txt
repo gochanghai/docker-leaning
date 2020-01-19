@@ -26,3 +26,6 @@ docker start nginx
 docker update --restart=always nginx
 
 
+mvn install:install-file -DgroupId=com.sf.module.ldap -DartifactId=sf-module-ldap -Dversion=1.2 -Dpackaging=jar -Dfile=sf-module-ldap-1.2.jar
+
+mvn install:install-file -DgroupId=com.sfpay.module -DartifactId=platform-client -Dversion=1.4.1 -Dpackaging=jar -Dfile=platform-client-1.4.1.jar

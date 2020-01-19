@@ -1,0 +1,2 @@
+在jar包目录下打开输入：
+mvn install:install-file -DgroupId=com.postmsg -DartifactId=postmsg-ump -Dversion=2.4 -Dpackaging=jar -Dfile=postmsg-ump-2.4.jar
