@@ -33,3 +33,5 @@
 192.168.0.118 www.lch.com:8848
 # zookeeper 
 192.168.0.118 www.lch.com:2184
+# RabbitMQ
+192.168.0.118 www.lch.com:15672
