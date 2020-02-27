@@ -1,17 +1,17 @@
-1. À­È¡ docker ¾µÏñ
+1. æ‹‰å– docker é•œåƒ
 docker pull mongo-express
 
-2. ÔËĞĞ
+2. è¿è¡Œ
 docker run -d --name mongo-express -p 8081:8081 --link mongodb:mongo --env ME_CONFIG_MONGODB_ADMINUSERNAME='root' --env ME_CONFIG_MONGODB_ADMINPASSWORD='123' mongo-express
 
-4¡¢²é¿´ÔËĞĞÖĞµÄÈİÆ÷
+4ã€æŸ¥çœ‹è¿è¡Œä¸­çš„å®¹å™¨
 docker ps
 
-5¡¢Í£Ö¹ docker ÔËĞĞÖĞµÄÈİÆ÷
+5ã€åœæ­¢ docker è¿è¡Œä¸­çš„å®¹å™¨
 docker stop mongo-express
 
-6¡¢Æô¶¯ docker ÖĞµÄÈİÆ÷
+6ã€å¯åŠ¨ docker ä¸­çš„å®¹å™¨
 docker start mongo-express
 
-7¡¢ÉèÖÃÈİÆ÷¿ª»ú×Ô¶¯Æô¶¯
+7ã€è®¾ç½®å®¹å™¨å¼€æœºè‡ªåŠ¨å¯åŠ¨
 docker update --restart=always mongo-express
