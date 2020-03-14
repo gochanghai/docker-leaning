@@ -1,0 +1,9 @@
+## 确保已安装curl命令
+$ curl --version
+##如果没有则先安装
+$ yum -y install curl
+##安装docker-compose
+$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+$ chmod +x /usr/local/bin/docker-compose
+##检查是否安装成功
+$ docker-compose version
