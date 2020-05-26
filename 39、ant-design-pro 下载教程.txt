@@ -1,0 +1,16 @@
+# 1. 下载地址
+https://github.com/ant-design/ant-design-pro
+
+# 2.解压缩
+
+# 3. 
+npm install
+
+# 4.
+npm start 
+
+# 5. 获取全部区块
+ npm run fetch:blocks
+
+# 6. 
+访问 http://localhost:8000
