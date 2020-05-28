@@ -18,3 +18,5 @@ Usage: sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows
 e.g.
 
 sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
+
+# 教程: http://seata.io/en-us/docs/user/quickstart.html
