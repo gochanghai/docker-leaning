@@ -1,0 +1,69 @@
+3.1 下载压缩包
+到官网地址(release)下载最新压缩包,请下载 canal.deployer-latest.tar.gz
+
+3.2 将canal.deployer 复制到固定目录并解压
+mkdir -p /usr/local/canal
+cp   canal.deployer-1.1.1.tar.gz   /usr/local/canal
+tar -zxvf canal.deployer-1.1.1.tar.gz 
+3.3 配置修改参数
+a. 修改instance 配置文件 vi conf/example/instance.properties
+#  按需修改成自己的数据库信息
+#################################################
+...
+canal.instance.master.address=192.168.1.20:3306
+# username/password,数据库的用户名和密码
+...
+canal.instance.dbUsername = canal
+canal.instance.dbPassword = canal
+...
+# mq config
+canal.mq.topic=example
+# 针对库名或者表名发送动态topic
+#canal.mq.dynamicTopic=mytest,.*,mytest.user,mytest\\..*,.*\\..*
+canal.mq.partition=0
+# hash partition config
+#canal.mq.partitionsNum=3
+#库名.表名: 唯一主键，多个表之间用逗号分隔
+#canal.mq.partitionHash=mytest.person:id,mytest.role:id
+#################################################
+
+对应ip 地址的MySQL 数据库需进行相关初始化与设置, 可参考 Canal QuickStart
+
+b. 修改canal 配置文件vi /usr/local/canal/conf/canal.properties
+# ...
+# 可选项: tcp(默认), kafka, RocketMQ
+canal.serverMode = kafka
+# ...
+# kafka/rocketmq 集群配置: 192.168.1.117:9092,192.168.1.118:9092,192.168.1.119:9092 
+canal.mq.servers = 127.0.0.1:6667
+canal.mq.retries = 0
+# flagMessage模式下可以调大该值, 但不要超过MQ消息体大小上限
+canal.mq.batchSize = 16384
+canal.mq.maxRequestSize = 1048576
+# flatMessage模式下请将该值改大, 建议50-200
+canal.mq.lingerMs = 1
+canal.mq.bufferMemory = 33554432
+# Canal的batch size, 默认50K, 由于kafka最大消息体限制请勿超过1M(900K以下)
+canal.mq.canalBatchSize = 50
+# Canal get数据的超时时间, 单位: 毫秒, 空为不限超时
+canal.mq.canalGetTimeout = 100
+# 是否为flat json格式对象
+canal.mq.flatMessage = false
+canal.mq.compressionType = none
+canal.mq.acks = all
+# kafka消息投递是否使用事务
+canal.mq.transaction = false
+
+3.4 启动
+cd /usr/local/canal/
+sh bin/startup.sh
+3.5 查看日志
+a.查看 logs/canal/canal.log
+
+vi logs/canal/canal.log
+b. 查看instance的日志：
+
+vi logs/example/example.log
+3.6 关闭
+cd /usr/local/canal/
+sh bin/stop.sh
