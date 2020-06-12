@@ -39,7 +39,6 @@ insert into pms_menu (id,version,status,creater,create_time, editor, edit_time, 
 -- ------------------------------step 2：权限功能点-------------------------------------------------
 -- 权限功能点的初始化数据
 
-
 insert into pms_permission (id,version,status,creater,create_time, editor, edit_time, remark, permission_name, permission) values
  (1, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','权限管理-菜单-查看','权限管理-菜单-查看','pms:menu:view'),
  (2, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','权限管理-菜单-添加','权限管理-菜单-添加','pms:menu:add'),
@@ -62,7 +61,6 @@ insert into pms_permission (id,version,status,creater,create_time, editor, edit_
  (33, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','权限管理-操作员-查看','权限管理-操作员-修改','pms:operator:edit'),
  (34, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','权限管理-操作员-冻结与解冻','权限管理-操作员-冻结与解冻','pms:operator:changestatus'),
  (35, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','权限管理-操作员-重置密码','权限管理-操作员-重置密码','pms:operator:resetpwd'),
-
 
  (51, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','账户管理-账户-查看','账户管理-账户-查看','account:accountInfo:view'),
  (52, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','账户管理-账户-添加','账户管理-账户-添加','account:accountInfo:add'),
@@ -158,7 +156,6 @@ insert into pms_role_operator (id,version,status,creater,create_time, editor, ed
 
 -- admin（拥有所有的权限点）
 insert into pms_role_permission  (role_id, permission_id) select 1,id from PMS_PERMISSION;
-
 
 -- guest （只有所有的查看权限）
 insert into pms_role_permission (version,status,creater,create_time, editor, edit_time, remark,role_id,permission_id)
