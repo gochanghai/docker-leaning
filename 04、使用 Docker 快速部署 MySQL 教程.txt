@@ -5,7 +5,9 @@ docker pull mysql
 docker images
 
 3、运行容器
-docker run -p 3306:3306 --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+e.g.1: docker run -p 3306:3306 --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+e.g.2: docker run -p 3307:3306 --name mysql-3307 -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=1
 
 4、查看运行中的容器
 docker ps
