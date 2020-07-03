@@ -7,7 +7,7 @@ gcc -v
 下载 redis
 http://download.redis.io/releases/redis-5.0.7.tar.gz
 
-加压缩
+解压缩
 tar xzf redis-5.0.7.tar.gz
 
 进入文件夹
