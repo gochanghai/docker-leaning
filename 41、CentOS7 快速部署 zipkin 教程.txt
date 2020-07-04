@@ -1,0 +1,22 @@
+1. 拉取镜像
+docker pull openzipkin/zipkin
+
+2. 运行镜像
+docker run -d -p 9411:9411 openzipkin/zipkin
+
+或
+docker run -d \
+--restart always \
+-v /etc/localtime:/etc/localtime:ro \
+-e MYSQL_USER=root \
+-e MYSQL_PASS=password \
+-e MYSQL_HOST=192.168.0.8 \
+-e STORAGE_TYPE=mysql \
+-e MYSQL_DB=zipkin \
+-e MYSQL_TCP_PORT=3306 \
+--net host \
+--name zipkin \
+openzipkin/zipkin
+
+官网：https://zipkin.io/
+
